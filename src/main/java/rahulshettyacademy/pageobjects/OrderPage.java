@@ -26,8 +26,18 @@ public class OrderPage extends AbstractComponent {
 
 	}
 
-	public Boolean VerifyOrderDisplay(String productName) {
-		Boolean match = productNames.stream().anyMatch(product -> product.getText().equalsIgnoreCase(productName));
+	public Boolean VerifyOrderDisplay(String productName) throws InterruptedException {
+		int count=0;
+		Boolean match=false;
+		while(count<10) {
+		try	{
+		match = productNames.stream().anyMatch(product -> product.getText().equalsIgnoreCase(productName));
+		break;
+		}catch(Exception e) {
+		Thread.sleep(1000);
+		count++;
+		}
+		}
 		return match;
 
 	}

@@ -30,7 +30,7 @@ public class StepDefinitionImpl extends BaseTest{
 
 	
 	@Given("^Logged in with username (.+) and password (.+)$")
-	public void logged_in_username_and_password(String username, String password)
+	public void logged_in_username_and_password(String username, String password) throws InterruptedException
 	{
 		productCatalogue = landingPage.loginApplication(username,password);
 	}
@@ -44,7 +44,7 @@ public class StepDefinitionImpl extends BaseTest{
 	}
 	
 	@When("^Checkout (.+) and submit the order$")
-	public void checkout_submit_order(String productName)
+	public void checkout_submit_order(String productName) throws InterruptedException
 	{
 		CartPage cartPage = productCatalogue.goToCartPage();
 

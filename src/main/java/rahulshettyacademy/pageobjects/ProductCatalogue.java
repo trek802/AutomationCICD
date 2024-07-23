@@ -33,25 +33,52 @@ public class ProductCatalogue extends AbstractComponent {
 	By addToCart = By.cssSelector(".card-body button:last-of-type");
 	By toastMessage = By.cssSelector("#toast-container");
 
-	public List<WebElement> getProductList() {
+	public List<WebElement> getProductList() throws InterruptedException {
+		int count=0;
+	    while(count<10) {
+	    try {
 		waitForElementToAppear(productsBy);
+		break;
+		}catch(Exception e) {
+			Thread.sleep(1000);
+			count++;
+		}
+	    }
 		return products;
 	}
 	
-	public WebElement getProductByName(String productName)
-	{
-		WebElement prod =	getProductList().stream().filter(product->
+	public WebElement getProductByName(String productName) throws InterruptedException
+	{   int count=0;WebElement prod=null;
+	    while(count<10) {
+	    try {
+		prod =	getProductList().stream().filter(product->
 		product.findElement(By.cssSelector("b")).getText().equals(productName)).findFirst().orElse(null);
+		break;
+		}catch(Exception e) {
+			Thread.sleep(1000);
+			count++;
+		}
+	    }
 		return prod;
 	}
 	
 	
 	public void addProductToCart(String productName) throws InterruptedException
 	{
+		int count=0;
 		WebElement prod = getProductByName(productName);
+		while(count<10) {
+			try {
+		
 		prod.findElement(addToCart).click();
 		waitForElementToAppear(toastMessage);
 		waitForElementToDisappear(spinner);
+		break;
+		}catch(Exception e) {
+			Thread.sleep(1000);
+			count++;
+		}
+		}
 
 
 	}

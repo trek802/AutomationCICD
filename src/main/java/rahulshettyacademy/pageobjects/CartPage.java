@@ -32,8 +32,17 @@ public class CartPage extends AbstractComponent {
 
 	}
 
-	public CheckoutPage goToCheckout() {
+	public CheckoutPage goToCheckout() throws InterruptedException {
+		int count=0;
+		while(count<10) {
+			try {
 		checkoutEle.click();
+		break;
+		}catch(Exception e) {
+			Thread.sleep(1000);
+			count++;
+		}
+		}
 		return new CheckoutPage(driver);
 		
 

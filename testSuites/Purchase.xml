@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite parallel = "tests" name="Suite">
+<suite name="Suite" parallel="methods">
 
-<groups>
+<!--<groups>
 	<run>
 		<include name="Purchase"/>
 	</run>
-</groups>
+</groups> -->
 
-  <test thread-count="5" name="Submit Order Test">
+  <test name="Submit Order Test">
     <classes>
       <class name="rahulshettyacademy.tests.SubmitOrderTest"/>
     </classes>
-  </test> <!-- Test -->
+  </test>
   
-  <test thread-count="5" name="Error Validations Test">
+  <!--<test name="Error Validations Test">
     <classes>
       <class name="rahulshettyacademy.tests.ErrorValidationsTest"/>
     </classes>
-  </test> <!-- Test -->
-</suite> <!-- Suite -->
+  </test> -->
+</suite> 

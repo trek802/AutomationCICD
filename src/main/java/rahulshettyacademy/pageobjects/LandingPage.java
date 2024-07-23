@@ -36,11 +36,21 @@ public class LandingPage extends AbstractComponent{
 	WebElement errorMessage;
 
 	
-	public ProductCatalogue loginApplication(String email,String password)
+	public ProductCatalogue loginApplication(String email,String password) throws InterruptedException
 	{
+		int count=0;
 		userEmail.sendKeys(email);
 		passwordEle.sendKeys(password);
-		submit.click();
+		while(count<10) {
+		try {
+			submit.click();
+			break;
+			}
+		catch(Exception e) {
+			Thread.sleep(1000);
+			count++;
+		}
+		}
 		ProductCatalogue productCatalogue = new ProductCatalogue(driver);
 		return productCatalogue;
 		
