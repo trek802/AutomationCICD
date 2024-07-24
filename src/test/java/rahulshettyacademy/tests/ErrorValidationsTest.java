@@ -38,4 +38,7 @@ public class ErrorValidationsTest extends BaseTest {
 		Assert.assertFalse(match);
 	}
 
+        @Test
+	void testCICD(){
+	System.out.println("Testing CICD");}
 }
